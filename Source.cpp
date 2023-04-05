@@ -1,75 +1,68 @@
 #include<iostream>
-
 using namespace std;
 
+int k = 0;
+
+void print2DArrayInSpiralForm(int arr[4][4], int rowI, int colI, int rowF, int colF) {
+
+    int element;
+
+    if (rowI >= rowF || colI >= colF)
+    {
+        return;
+    }
+
+    int i = rowI;
+
+    cout << "1st row\n\n" << endl;
+
+    for (int j = colI; j < colF; j++)
+    {
+        cout << i << " " << j << endl;
+        element = arr[i][j];
+        cout << "arrtemp[" << k << "]: " << element << endl;
+        k++;
+    }
+
+    cout << "\n\nLast col\n\n" << endl;
+
+    int l = colF - 1;
+    for (int m = rowI + 1; m < rowF; m++)
+    {
+        cout << m << " " << l << endl;
+        element = arr[m][l];
+        cout << "arrtemp[" << k << "]: " << element << endl;
+        k++;
+    }
+  
+
+   
+    cout << "\n\nlast row\n\n" << endl;
 
 
+    int z = rowF - 1;
+    for (int o = colF - 2; o >= colI; o--)
+    {
+        cout << z << " " << o << endl;
+        element = arr[z][o];
+        cout << "arrtemp[" << k << "]: " << element << endl;
+        k++;
+    }
+   
 
-int* print2DArrayInSpiralForm(int arr[3][3], int row, int col) {
-    int* arrTemp = new int [row*col];
-    int k = 0;
-    int i = 0;
-        for (int j = 0; j < col; j++)
-        {
-            cout << i << " " << j << endl;
-            arrTemp[k]= arr[i][j];
-            cout << "arrtemp[" << k << "]: " << arrTemp[k]<<endl;
-            k++;
-        }
-    
-        cout << "\n\n1st loop done\n\n" << endl;
-      
-        i++;
-        int l = col-1;
-        for (int m = i; m < row; m++)
-        {
-            cout << m << " " << l << endl;
-            arrTemp[k] = arr[m][l];
-            cout << "arrtemp[" << k << "]: " << arrTemp[k] << endl;
-            k++;
-        }
-        i++;
+    cout << "\n\nFirst col\n\n" << endl;
 
-        cout << "\n\n2nd loop done\n\n" << endl;
+    int y = colI;
+    for (int u = rowF - 2; u > rowI; u--)
+    {
+        cout << u << " " << y << endl;
+        element = arr[u][y];
+        cout << "arrtemp[" << k << "]: " << element << endl;
+        k++;
+    }
 
+    print2DArrayInSpiralForm(arr, rowI + 1, colI + 1, rowF - 1, colF - 1);
 
-        int z = row - 1;
-        for (int o = col - 2; o >= 0; o--)
-        {
-            cout << z << " " << o << endl;
-            arrTemp[k] = arr[z][o];
-            cout << "arrtemp[" << k << "]: " << arrTemp[k] << endl;
-            k++;
-        }
-        i++;
-
-        cout << "\n\n3rd loop done\n\n" << endl;
-
-        int y = 0;
-        for (int u = row - 2; u > 0; u--)
-        {
-            cout << u << " " << y << endl;
-            arrTemp[k] = arr[u][y];
-            cout << "arrtemp[" << k << "]: " << arrTemp[k] << endl;
-            k++;
-        }
-
-        i++;
-
-        cout << "\n\n4th loop done\n\n" << endl;
-
-        int c = 1;
-        for (int h = 1; h < col - 1; h++)
-        {
-            cout << c << " " << h << endl;
-            arrTemp[k] = arr[c][h];
-            cout << "arrtemp[" << k << "]: " << arrTemp[k] << endl;
-            k++;
-        }
-
-    
-
-    return arrTemp;
 }
 
 
@@ -77,19 +70,26 @@ int* print2DArrayInSpiralForm(int arr[3][3], int row, int col) {
 
 int main()
 {
-	int arr[3][3] = { {1,2,3}, {4,5,6}, {7,8,9} };
+    //int arr[3][3] = { {1,2,3}, {4,5,6}, {7,8,9} };
 
-    int* matrix = print2DArrayInSpiralForm(arr, 3,3);
+ //   int* matrix = print2DArrayInSpiralForm(arr, 3,3);
+ //   cout << "\n\n\n";
+ //   for (int i = 0; i < 9; i++) {
+ //       //for (int j = 0; j < 3; j++) {
+ //           cout << matrix[i] << " ";
+ //       //}
+ //     
+ //   }
+
+
+    int arr[4][4] = { { 1, 2, 3, 4 },
+                    { 5, 6, 7, 8 },
+                    { 9, 10, 11, 12 },
+                    { 13, 14, 15, 16 } };
+
+
+    print2DArrayInSpiralForm(arr, 0, 0, 4, 4);
+  
     cout << "\n\n\n";
-    for (int i = 0; i < 9; i++) {
-        //for (int j = 0; j < 3; j++) {
-            cout << matrix[i] << " ";
-        //}
-      
-    }
-
-
-
-	cout << "\n\n\n";
-	return 0;
+    return 0;
 }
